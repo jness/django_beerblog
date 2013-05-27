@@ -1,0 +1,28 @@
+{% include 'beerblog/head.html' %}
+{% include 'beerblog/menu.html' %}
+
+<div class="container">
+    <div class="content">
+
+        {% for brewery in breweries %}
+
+            <p><a href='{% url beers %}?brewery={{ brewery.id }}'>{{ brewery }}</a></p>
+
+        {% endfor %}
+
+    <p class=pull-left>
+        {% if brewery.has_previous %}
+            <a href='.?page={{ brewery.previous_page_number }}'><i class=icon-arrow-left></i></a>
+        {% endif %}
+    </p>
+
+    <p class=pull-right>
+        {% if brewery.has_next %}
+            <a href='.?page={{ brewery.next_page_number }}'><i class=icon-arrow-right></i></a>
+        {% endif %}
+    </p>
+    
+    </div>
+</div>
+
+{% include 'beerblog/foot.html' %}

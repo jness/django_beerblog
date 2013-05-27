@@ -1,0 +1,98 @@
+{% include 'beerblog/head.html' %}
+{% include 'beerblog/menu.html' %}
+{% load tools %}
+
+<div class="container">
+    <div class="content">
+
+        {% if not beers %}
+            <h3>No beers of this type blogged</h3>
+        {% endif %}
+
+        {% for beer in beers %}
+
+            <h2><a href='?beer={{ beer.id }}'><font color='black'>{{ beer.name }}</font></a></h2>
+            <small>
+
+            <p><b>Posted: </b>{{ beer.created }}</p>
+
+            <p><b>My Rating: </b>
+               {{ beer.overall_score}}
+            </p>
+
+            <p><b>Brewer: </b>
+                <a href='{{ beer.brewery.website }}'>{{ beer.brewery.name }}</a>
+            </p>
+
+            <p><b>Type: </b>
+                {{ beer.beer_type.name }}
+            </p>
+
+            <p><b>ABV: </b>
+                {{ beer.alcohol_by_volume }} %
+            </p>
+
+            {% if beer.comments %}
+                <p>
+                <pre style="background-color: white; border: none; font-family: inherit;">{{ beer.comments }}</pre>
+                </p>
+            {% endif %}
+
+            </small>
+
+            <br>
+
+            <table width=100% cellpadding="25">
+
+            <tr>
+
+               <td valign='top' width=50%>
+                {% if beer.image %}
+                    <img width=400 src='{{ beer.image.image.url }}' />
+                {% endif %}
+               </td>
+
+               <td valign='top' width=50%>
+                   <h5>Appearance: <small>{{ beer.appearance_score }}</small></h5>
+                   <p>{{ beer.appearance }}</p>
+                   <hr width=55%>
+
+                   <h5>Smell: <small>{{ beer.smell_score }}</small></h5>
+                   <p>{{ beer.smell }}</p>
+                   <hr width=55%>
+
+                   <h5>Taste: <small>{{ beer.taste_score }}</small></h5>
+                   <p>{{ beer.taste }}</p>
+                   <hr width=55%>
+
+                   <h5>Mouthfeel: <small>{{ beer.mouthfeel_score }}</small></h5>
+                   <p>{{ beer.mouthfeel }}</p>
+                   <hr width=55%>
+
+                   <h5>Overall: <small>{{ beer.overall_score }}</small></h5>
+                   <p>{{ beer.overall }}</p>
+               </td>
+
+            </tr>
+            </table>
+
+           <hr>
+
+        {% endfor %}
+
+    <p class=pull-left>
+        {% if beers.has_previous %}
+            <a href='.?page={{ beers.previous_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-left></i></a>
+        {% endif %}
+    </p>
+
+    <p class=pull-right>
+        {% if beers.has_next %}
+            <a href='.?page={{ beers.next_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-right></i></a>
+        {% endif %}
+    </p>
+    
+    </div>
+</div>
+
+{% include 'beerblog/foot.html' %}

@@ -1,0 +1,249 @@
+[
+{
+      "model": "beerblog.Brewery",
+      "pk": 1,
+      "fields": {
+        "name": "Stone Brewing Co.",
+        "website": "http://www.stonebrew.com/"
+      }
+},
+{
+      "model": "beerblog.Brewery",
+      "pk": 2,
+      "fields": {
+        "name": "Unibroue",
+        "website": "http://www.unibroue.com/en/"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 1,
+      "fields": {
+        "name": "Amber Ale"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 2,
+      "fields": {
+        "name": "Barley Wine"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 3,
+      "fields": {
+        "name": "Blonde Ale"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 4,
+      "fields": {
+        "name": "Bock"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 5,
+      "fields": {
+        "name": "Brown Ale"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 6,
+      "fields": {
+        "name": "Dark Ale"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 7,
+      "fields": {
+        "name": "Hefeweizen"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 8,
+      "fields": {
+        "name": "India Pale Ale"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 9,
+      "fields": {
+        "name": "Lager"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 10,
+      "fields": {
+        "name": "Porter"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 11,
+      "fields": {
+        "name": "Red Ale"
+      }
+},
+{
+      "model": "beerblog.BeerType",
+      "pk": 12,
+      "fields": {
+        "name": "Stout"
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 1,
+      "fields": {
+        "value": 0.0
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 2,
+      "fields": {
+        "value": 0.25
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 3,
+      "fields": {
+        "value": 0.5
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 4,
+      "fields": {
+        "value": 0.75
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 5,
+      "fields": {
+        "value": 1.0
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 6,
+      "fields": {
+        "value": 1.25
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 7,
+      "fields": {
+        "value": 1.5
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 8,
+      "fields": {
+        "value": 1.75
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 9,
+      "fields": {
+        "value": 2.0
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 10,
+      "fields": {
+        "value": 2.25
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 11,
+      "fields": {
+        "value": 2.5
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 12,
+      "fields": {
+        "value": 2.75
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 13,
+      "fields": {
+        "value": 3.0
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 14,
+      "fields": {
+        "value": 3.25
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 15,
+      "fields": {
+        "value": 3.5
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 16,
+      "fields": {
+        "value": 3.75
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 17,
+      "fields": {
+        "value": 4.0
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 18,
+      "fields": {
+        "value": 4.25
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 19,
+      "fields": {
+        "value": 4.5
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 20,
+      "fields": {
+        "value": 4.75
+      }
+},
+{
+      "model": "beerblog.Rating",
+      "pk": 21,
+      "fields": {
+        "value": 5.0
+      }
+}
+]
