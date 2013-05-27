@@ -1,6 +1,4 @@
 from django.db import models
-from django.conf import settings
-from tinymce.models import HTMLField
 
 
 class BeerImage(models.Model):
