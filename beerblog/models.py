@@ -63,7 +63,7 @@ class Beer(models.Model):
     alcohol_by_volume = models.FloatField()
     image = models.ForeignKey(BeerImage)
 
-    comments = models.TextField()
+    comments = models.TextField(null=True, blank=True)
 
     # Beer Rating and Score Inputs
     appearance_score = models.ForeignKey(Rating,
