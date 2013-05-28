@@ -8,7 +8,7 @@ class BeerImage(models.Model):
         ordering = ['label']
 
     label = models.CharField(max_length=55)
-    image = models.ImageField(upload_to='.')
+    image = models.ImageField(upload_to='images/')
     created = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
