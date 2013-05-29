@@ -72,7 +72,7 @@ class Beer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     beer_type = models.ForeignKey(BeerType)
     alcohol_by_volume = models.FloatField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/uploads/')
 
     comments = models.TextField(null=True, blank=True)
 
@@ -106,7 +106,7 @@ class Wine(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     wine_type = models.ForeignKey(WineType)
     alcohol_by_volume = models.FloatField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/uploads/')
 
     comments = models.TextField(null=True, blank=True)
 
