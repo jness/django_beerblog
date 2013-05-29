@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^$', 'beerblog.views.home', name='home'),
     url(r'^beers/$', 'beerblog.views.beers', name='beers'),
     url(r'^wines/$', 'beerblog.views.wines', name='wines'),
+    url(r'^search/$', 'beerblog.views.search', name='search'),
 )

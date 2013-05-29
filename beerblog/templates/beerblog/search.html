@@ -1,0 +1,117 @@
+{% include 'beerblog/head.html' %}
+{% include 'beerblog/menu.html' %}
+{% load tools %}
+
+<div class="container">
+    <div class="content">
+
+        <p class=script-header>Search</p>
+
+         {% if beers %}
+            <p class=script-font>Beers</p>
+            <table class="table table-striped">
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Brewery</b></td>
+                <td><b>Type</b></td>
+                <td><b>ABV</b></td>
+                <td><b>Rating</b></td>
+            </tr>
+            {% for beer in beers %}
+                <tr>
+                    <td>{{ beer.name }}</td>
+                    <td>{{ beer.brewery }}</td>
+                    <td>{{ beer.beer_type }}</td>
+                    <td>{{ beer.alcohol_by_volume }}%</td>
+                    <td>{{ beer.overall_score }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         {% endif %}
+
+         {% if beer_type %}
+            <p class=script-font>Beer Type</p>
+            <table class="table table-striped">
+            <tr>
+                <td><b>Name</b></td>
+            </tr>
+            {% for type in beer_type %}
+                <tr>
+                    <td>{{ type.name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         {% endif %}
+
+         {% if breweries %}
+            <p class=script-font>Breweries</p>
+            <table class="table table-striped">
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Website</b></td>
+            </tr>
+            {% for brewery in breweries %}
+                <tr>
+                    <td>{{ brewery.name }}</td>
+                    <td>{{ brewery.website }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         {% endif %}
+
+         {% if wines %}
+            <p class=script-font>Beers</p>
+            <table class="table table-striped">
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Winery</b></td>
+                <td><b>Type</b></td>
+                <td><b>ABV</b></td>
+                <td><b>Rating</b></td>
+            </tr>
+            {% for wine in wines %}
+                <tr>
+                    <td>{{ wine.name }}</td>
+                    <td>{{ wine.winery }}</td>
+                    <td>{{ wine.beer_type }}</td>
+                    <td>{{ wine.alcohol_by_volume }}%</td>
+                    <td>{{ wine.overall_score }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         {% endif %}
+
+         {% if wine_type %}
+            <p class=script-font>Beer Type</p>
+            <table class="table table-striped">
+            <tr>
+                <td><b>Name</b></td>
+            </tr>
+            {% for type in wine_type %}
+                <tr>
+                    <td>{{ type.name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         {% endif %}
+
+         {% if wineries %}
+            <p class=script-font>Wineries</p>
+            <table class="table table-striped">
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Website</b></td>
+            </tr>
+            {% for winery in wineries %}
+                <tr>
+                    <td>{{ winery.name }}</td>
+                    <td>{{ winery.website }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+         {% endif %}
+    
+    </div>
+</div>
+
+{% include 'beerblog/foot.html' %}

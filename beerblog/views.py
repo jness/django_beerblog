@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from beerblog.models import Beer, BeerType, Brewery
+from beerblog.models import Beer, Wine, Brewery, Winery, BeerType, WineType
 
 
 def _get_pages(request, object, count=5):
@@ -22,7 +22,32 @@ def home(request):
     content = dict()
     content['view'] = 'Home'
     content['settings'] = settings
+    content['latest_beers'] = Beer.objects.all().order_by('-created')[:5]
+    content['latest_wines'] = Wine.objects.all().order_by('-created')[:5]
     return render(request, 'beerblog/home.html', content)
+
+
+def search(request):
+    """Search Page"""
+    content = dict()
+    content['view'] = 'Search'
+    content['settings'] = settings
+    search_term = request.GET.get('s')
+    if search_term:
+        content['search_term'] = search_term
+        content['beers'] = Beer.objects.filter(
+            name__icontains=search_term)
+        content['wines'] = Wine.objects.filter(
+            name__icontains=search_term)
+        content['breweries'] = Brewery.objects.filter(
+            name__icontains=search_term)
+        content['wineries'] = Winery.objects.filter(
+            name__icontains=search_term)
+        content['beer_type'] = BeerType.objects.filter(
+            name__icontains=search_term)
+        content['wine_type'] = WineType.objects.filter(
+            name__icontains=search_term)
+    return render(request, 'beerblog/search.html', content)
 
 
 def beers(request):
@@ -51,6 +76,7 @@ def beers(request):
 
     content['beers'] = _get_pages(request, beers)
     return render(request, 'beerblog/beers.html', content)
+
 
 def wines(request):
     """wines Page"""
