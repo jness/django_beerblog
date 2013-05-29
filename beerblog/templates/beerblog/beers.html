@@ -11,9 +11,9 @@
         <tr>
             <td><b>Name</b></td>
             <td><b>Brewery</b></td>
-            <td><b>Type</b></td>
-            <td><b>ABV</b></td>
-            <td><b>Rating</b></td>
+            <td class="hidden-phone"><b>Type</b></td>
+            <td class="hidden-phone"><b>ABV</b></td>
+            <td class="hidden-phone"><b>Rating</b></td>
         </tr>
 
         {% for beer in beers %}
@@ -21,9 +21,9 @@
             <tr>
                 <td>{{ beer.name }}</td>
                 <td>{{ beer.brewery }}</td>
-                <td>{{ beer.beer_type }}</td>
-                <td>{{ beer.alcohol_by_volume }}%</td>
-                <td>{{ beer.overall_score }}</td>
+                <td class="hidden-phone">{{ beer.beer_type }}</td>
+                <td class="hidden-phone">{{ beer.alcohol_by_volume }}%</td>
+                <td class="hidden-phone">{{ beer.overall_score }}</td>
             </tr>
 
         {% endfor %}
