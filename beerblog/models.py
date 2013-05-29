@@ -1,20 +1,6 @@
 from django.db import models
 
 
-class BeerImage(models.Model):
-    """Image of our beer"""
-
-    class Meta:
-        ordering = ['label']
-
-    label = models.CharField(max_length=55)
-    image = models.ImageField(upload_to='images/')
-    created = models.DateTimeField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.label
-
-
 class BeerType(models.Model):
     """The different beer types"""
 
@@ -61,7 +47,7 @@ class Beer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     beer_type = models.ForeignKey(BeerType)
     alcohol_by_volume = models.FloatField()
-    image = models.ForeignKey(BeerImage)
+    image = models.ImageField(upload_to='images/')
 
     comments = models.TextField(null=True, blank=True)
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from beerblog.models import Beer, BeerImage, BeerType, Brewery, Rating
+from beerblog.models import Beer, BeerType, Brewery
 
 
 def _get_pages(request, object, count=5):
@@ -15,6 +15,14 @@ def _get_pages(request, object, count=5):
     except EmptyPage:
         beers = pages.page(pages.num_pages)
     return beers
+
+
+def home(request):
+    """Home Page"""
+    content = dict()
+    content['view'] = 'Home'
+    content['settings'] = settings
+    return render(request, 'beerblog/home.html', content)
 
 
 def beers(request):
@@ -44,22 +52,9 @@ def beers(request):
     content['beers'] = _get_pages(request, beers)
     return render(request, 'beerblog/beers.html', content)
 
-
-def breweries(request):
-    """breweries Page"""
+def wines(request):
+    """wines Page"""
     content = dict()
-    content['view'] = 'Breweries'
+    content['view'] = 'Wines'
     content['settings'] = settings
-    breweries = Brewery.objects.all()
-    content['breweries'] = _get_pages(request, breweries, 50)
-    return render(request, 'beerblog/breweries.html', content)
-
-
-def beer_types(request):
-    """beer_types Page"""
-    content = dict()
-    content['view'] = 'Beer Types'
-    content['settings'] = settings
-    styles = BeerType.objects.all()
-    content['beer_types'] = _get_pages(request, styles, 50)
-    return render(request, 'beerblog/beer_types.html', content)
+    return render(request, 'beerblog/wines.html', content)

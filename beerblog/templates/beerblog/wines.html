@@ -5,7 +5,7 @@
 <div class="container">
     <div class="content">
 
-        <p class=script-header>Beers</p>
+        <p class=script-header>Wines</p>
 
         <table class="table table-striped">
         <tr>
@@ -16,14 +16,14 @@
             <td><b>Rating</b></td>
         </tr>
 
-        {% for beer in beers %}
+        {% for wine in wines %}
 
             <tr>
-                <td>{{ beer.name }}</td>
-                <td>{{ beer.brewery }}</td>
-                <td>{{ beer.beer_type }}</td>
-                <td>{{ beer.alcohol_by_volume }}%</td>
-                <td>{{ beer.overall_score }}</td>
+                <td>{{ wine.name }}</td>
+                <td>{{ wine.brewery }}</td>
+                <td>{{ wine.beer_type }}</td>
+                <td>{{ wine.alcohol_by_volume }}%</td>
+                <td>{{ wine.overall_score }}</td>
             </tr>
 
         {% endfor %}
@@ -31,14 +31,14 @@
         </table>
 
     <p class=pull-left>
-        {% if beers.has_previous %}
-            <a href='.?page={{ beers.previous_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-left></i></a>
+        {% if wines.has_previous %}
+            <a href='.?page={{ wines.previous_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-left></i></a>
         {% endif %}
     </p>
 
     <p class=pull-right>
-        {% if beers.has_next %}
-            <a href='.?page={{ beers.next_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-right></i></a>
+        {% if wines.has_next %}
+            <a href='.?page={{ wines.next_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-right></i></a>
         {% endif %}
     </p>
     

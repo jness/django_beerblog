@@ -1,22 +1,23 @@
 <div class="navbar navbar-fixed-top">
+
     <div class="navbar-inner">
-  
         <div class="container">
-          <a class="brand" href='{% url beers %}'>
-          {{ settings.TITLE }}</a>
-        </div>
 
-    <div class="navbar-inner" style='background-color: #EEE;'>
-        <div class="container">
-          <ul class="nav">
+            <ul class="nav">
+               <li style="padding-left: 45px;">&nbsp;</li>
+               <li class='hidden-phone'><a href='{% url home %}'>Nessy's Tavern</a></li>
+               <li class="divider-vertical"></li>
+               <li class="searchnav">
+                    <form name="input" action="/search/" class="form-search" method="GET">
+                        <input class="span4" type="text" placeholder="Search" name="s"></li>
+                    </form>
+               <li class="divider-vertical"></li>
+               <li><a href='{% url home %}'>About</a></li>
+               <li><a href='{% url beers %}'>Beer</a></li>
+               <li><a href='{% url wines %}'>Wine</a></li>
+           </ul>
 
-              <li {% if view == 'Beers' %}class="active"{% endif %}><a href="{% url beers %}">Beer Blog</a></li>
-              <li {% if view == 'Breweries' %}class="active"{% endif %}><a href="{% url breweries %}">Breweries</a></li>
-              <li {% if view == 'Beer Types' %}class="active"{% endif %}><a href="{% url beer_types %}">Beer Types</a></li>
-
-          </ul>
         </div>
     </div>
 
-    </div>
 </div>
