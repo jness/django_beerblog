@@ -7,6 +7,10 @@
 
         <p class=script-header>Search</p>
 
+        <form class='visible-phone' name="input" action="/search/" class="form-search" method="GET">
+            <input class="span4" type="text" placeholder="Search" name="s" value="{{ search_term }}"></li>
+        </form>
+
          {% if beers %}
             <p class=script-font>Beers</p>
             <table class="table table-striped">

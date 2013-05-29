@@ -6,15 +6,16 @@
             <ul class="nav">
                <li style="padding-left: 45px;">&nbsp;</li>
                <li class='hidden-phone'><a href='{% url home %}'>Nessy's Tavern</a></li>
-               <li class="divider-vertical"></li>
-               <li class="searchnav">
-                    <form name="input" action="/search/" class="form-search" method="GET">
+               <li class="hidden-phone divider-vertical"></li>
+               <li class="hidden-phone searchnav">
+                    <form class='hidden-phone' name="input" action="/search/" class="form-search" method="GET">
                         <input class="span4" type="text" placeholder="Search" name="s" value="{{ search_term }}"></li>
                     </form>
-               <li class="divider-vertical"></li>
+               <li class="hidden-phone divider-vertical"></li>
                <li><a href='{% url home %}'>About</a></li>
                <li><a href='{% url beers %}'>Beer</a></li>
                <li><a href='{% url wines %}'>Wine</a></li>
+               <li class='visible-phone'><a href='{% url search %}'>Search</a></li>
            </ul>
 
         </div>
