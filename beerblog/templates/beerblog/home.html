@@ -5,12 +5,46 @@
 <div class="container">
     <div class="content">
 
-        <p class="hidden-phone script-header">Welcome To Nessy's Tavern</p>
-        <p class="visible-phone script-font">Welcome To Nessy's Tavern</p>
+        <h2 class="visible-phone script-font">Welcome to Nessy's Tavern</h2>
 
-        <center>
-            <img src='/static/images/tavern.jpg' />
-        </center>
+        <div id="myCarousel" class="carousel slide">
+
+            <div class="carousel-inner">
+
+              <div class="item active">
+                <img src="/static/images/tavern1.jpg" alt="">
+                <div class="hidden-phone carousel-caption">
+                  <h4 class=script-header>Welcome to Nessy's Tavern</h4>
+                </div>
+              </div>
+
+              <div class="item">
+                <img src="/static/images/tavern2.jpg" alt="">
+                <div class="hidden-phone carousel-caption">
+                  <h4 class=script-header>Welcome to Nessy's Tavern</h4>
+                </div>
+              </div>
+
+              <div class="item">
+                <img src="/static/images/tavern3.jpg" alt="">
+                <div class="hidden-phone carousel-caption">
+                  <h4 class=script-header>Welcome to Nessy's Tavern</h4>
+                </div>
+              </div>
+
+            </div>
+
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+        </div>
+
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('.carousel').carousel({
+              interval: 5000
+            })
+          });
+        </script>
 
         <div class="row">
             <div class="span5 bubble"><h3 class=script-font>About The Bar:</h3>
