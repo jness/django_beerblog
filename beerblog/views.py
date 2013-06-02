@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
+from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from beerblog.models import Beer, Wine, Brewery, Winery, BeerType, WineType
 
@@ -78,9 +79,57 @@ def beers(request):
     return render(request, 'beerblog/beers.html', content)
 
 
+def beer(request, pk):
+    """beer Page"""
+    content = dict()
+    content['view'] = 'Beer'
+    content['settings'] = settings
+
+    beer = Beer.objects.get(id=pk)
+    if not beer:
+        raise Http404
+
+    content['beer'] = beer
+    return render(request, 'beerblog/beer.html', content)
+
+
 def wines(request):
     """wines Page"""
     content = dict()
     content['view'] = 'Wines'
     content['settings'] = settings
+
+    wines = Wine.objects.all().order_by('-created')
+
+    winery = request.GET.get('winery')
+    if winery:
+        wines = wines.filter(winery__id=winery)
+
+    wine_type = request.GET.get('wine_type')
+    if wine_type:
+        wines = wines.filter(wine_type__id=wine_type)
+
+    wine = request.GET.get('wine')
+    if wine:
+        wines = wines.filter(id=wine)
+
+    search = request.GET.get('search')
+    if search:
+        wines = wines.filter(name__icontains=search)
+
+    content['wines'] = _get_pages(request, wines)
     return render(request, 'beerblog/wines.html', content)
+
+
+def wine(request, pk):
+    """wine Page"""
+    content = dict()
+    content['view'] = 'Wine'
+    content['settings'] = settings
+
+    wine = Wine.objects.get(id=pk)
+    if not wine:
+        raise Http404
+
+    content['wine'] = wine
+    return render(request, 'beerblog/wine.html', content)

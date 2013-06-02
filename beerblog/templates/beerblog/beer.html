@@ -1,0 +1,79 @@
+{% include 'beerblog/head.html' %}
+{% include 'beerblog/menu.html' %}
+{% load tools %}
+
+<div class="container">
+    <div class="content">
+
+        <p class=script-header>{{ beer.name }}</p>
+        <hr>
+
+        <div class="row">
+            <div class="span4">
+                <p><b>Brewery</b></p>
+            </div>
+            <div class="span6">{{ beer.brewery }}</div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="span4">
+                <p><b>Type</b></p>
+            </div>
+            <div class="span6">{{ beer.beer_type }}</div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="span4">
+                <p><b>ABV</b></p>
+            </div>
+            <div class="span6">{{ beer.alcohol_by_volume }}%</div>
+        </div>
+        <hr>
+
+        {% if beer.comments %}
+            <div class="row">
+                <div class="span4">
+                    <p><b>Comments</b></p>
+                </div>
+                <div class="span6">{{ beer.comments }}</div>
+            </div>
+            <hr>
+        {% endif %}
+
+        <div class="row">
+
+           <div class="span4 hidden-phone">
+                {% if beer.image %}
+                    <img src='{{ beer.image.url }}' />
+                {% else %}
+                    <img src='/static/images/blank_beer.jpeg' />
+                {% endif %}
+                <hr>
+           </div>
+
+            <div class="span6">
+                <p><b>Appearance: {{ beer.appearance_score }}</b></p>
+                <p>{{ beer.appearance }}</p><hr>
+
+                <p><b>Smell: {{ beer.smell_score }}</b></p>
+                <p>{{ beer.smell }}</p><hr>
+
+                <p><b>Taste: {{ beer.taste_score }}</b></p>
+                <p>{{ beer.taste }}</p><hr>
+
+                <p><b>Mouthfeel: {{ beer.mouthfeel_score }}</b></p>
+                <p>{{ beer.mouthfeel }}</p><hr>
+
+                <p><b>Overall: {{ beer.overall_score }}</b></p>
+                <p>{{ beer.overall }}</p>
+            </div>
+
+        </div>
+
+    
+    </div>
+</div>
+
+{% include 'beerblog/foot.html' %}

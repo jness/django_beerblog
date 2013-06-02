@@ -64,17 +64,13 @@
 
             <div class="span2 bubble"><h3 class="script-font">New Beers:</h3>
                 {% for beer in latest_beers %}
-                    <p><i class="icon-glass"></i> <a href="#beer_modal{{ beer.id }}" data-toggle="modal">{{ beer.name }}</a></p>
-
-                     {% include 'beerblog/beer_modal.html' %}
+                    <p><i class="icon-glass"></i> <a href="{% url beer beer.id %}">{{ beer.name }}</a></p>
                 {% endfor %}
             </div>
 
             <div class="span2 bubble"><h3 class=script-font>New Wines:</h3>
                 {% for wine in latest_wines %}
-                    <p><i class="icon-glass"></i> <a href="#wine_modal{{ wine.id }}" data-toggle="modal">{{ wine.name }}</a></p>
-
-                    {% include 'beerblog/wine_modal.html' %}
+                    <p><i class="icon-glass"></i> <a href="{% url wine wine.id %}">{{ wine.name }}</a></p>
                 {% endfor %}
             </div>
 

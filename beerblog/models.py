@@ -107,7 +107,9 @@ class Wine(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     wine_type = models.ForeignKey(WineType)
     alcohol_by_volume = models.FloatField()
-    image = models.ImageField(upload_to='images/uploads/')
+    image = ImageWithThumbsField(upload_to='images/uploads/',
+                                 sizes=((200, 200), ()),
+                                 null=True, blank=True)
 
     comments = models.TextField(null=True, blank=True)
 
