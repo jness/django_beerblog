@@ -20,8 +20,8 @@
 
             <tr>
                 <td><a href="{% url beer beer.id %}">{{ beer.name }}</a></td>
-                <td class="hidden-phone">{{ beer.brewery }}</td>
-                <td class="hidden-phone">{{ beer.beer_type }}</td>
+                <td class="hidden-phone"><a href="{% url beers %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></td>
+                <td class="hidden-phone"><a href="{% url beers %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></td>
                 <td class="hidden-phone">{{ beer.alcohol_by_volume }}%</td>
                 <td class="hidden-phone">{{ beer.overall_score }}</td>
             </tr>
