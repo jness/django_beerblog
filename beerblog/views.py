@@ -57,7 +57,7 @@ def beers(request):
     content['view'] = 'Beers'
     content['settings'] = settings
 
-    beers = Beer.objects.all().order_by('-created')
+    beers = Beer.objects.all()
 
     brewery = request.GET.get('brewery')
     if brewery:
@@ -99,7 +99,7 @@ def wines(request):
     content['view'] = 'Wines'
     content['settings'] = settings
 
-    wines = Wine.objects.all().order_by('-created')
+    wines = Wine.objects.all()
 
     winery = request.GET.get('winery')
     if winery:
