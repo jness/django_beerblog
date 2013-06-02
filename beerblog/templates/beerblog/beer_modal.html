@@ -1,4 +1,4 @@
-<div id="modal{{ beer.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="beer_modal{{ beer.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">{{ beer.name }}</h3>
@@ -8,12 +8,14 @@
     <p><b>Beer Type:</b> {{ beer.beer_type }}</p>
     <p><b>ABV:</b> {{ beer.alcohol_by_volume }}%</p>
 
-    {% if comments %}
+    {% if beer.image %}
+        <img style='height: 300px;' src='/static/{{ beer.image }}' />
+    {% endif %}
+
+    {% if beer.comments %}
         <p><b>Comments:</b></p>
         <p>{{ beer.comments }}</p>
     {% endif %}
-
-    <img style='height: 300px;' src='/static/{{ beer.image }}' />
 
     <hr>
 

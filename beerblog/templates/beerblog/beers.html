@@ -19,7 +19,7 @@
         {% for beer in beers %}
 
             <tr>
-                <td><a href="#myModal" data-toggle="modal">{{ beer.name }}</a></td>
+                <td><a href="#beer_modal{{ beer.id }}" data-toggle="modal">{{ beer.name }}</a></td>
                 <td class="hidden-phone">{{ beer.brewery }}</td>
                 <td class="hidden-phone">{{ beer.beer_type }}</td>
                 <td class="hidden-phone">{{ beer.alcohol_by_volume }}%</td>

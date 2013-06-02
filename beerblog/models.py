@@ -44,7 +44,6 @@ class Brewery(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=255)
-    website = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.name
@@ -57,7 +56,6 @@ class Winery(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=255)
-    website = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.name
@@ -72,7 +70,8 @@ class Beer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     beer_type = models.ForeignKey(BeerType)
     alcohol_by_volume = models.FloatField()
-    image = models.ImageField(upload_to='images/uploads/')
+    image = models.ImageField(upload_to='images/uploads/',
+                              null=True, blank=True)
 
     comments = models.TextField(null=True, blank=True)
 
