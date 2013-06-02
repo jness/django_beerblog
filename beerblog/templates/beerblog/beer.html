@@ -46,7 +46,7 @@
 
            <div class="span4 hidden-phone">
                 {% if beer.image %}
-                    <img src='{{ beer.image.url }}' />
+                    <img src='{{ beer.image.url_600x800 }}' />
                 {% else %}
                     <img src='/static/images/blank_beer.jpeg' />
                 {% endif %}

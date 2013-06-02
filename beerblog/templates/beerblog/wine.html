@@ -46,7 +46,7 @@
 
            <div class="span4 hidden-phone">
                 {% if wine.image %}
-                    <img src='{{ wine.image.url }}' />
+                    <img src='{{ wine.image.url_600x800 }}' />
                 {% else %}
                     <img src='/static/images/blank_wine.jpeg' />
                 {% endif %}

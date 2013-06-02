@@ -72,7 +72,7 @@ class Beer(models.Model):
     beer_type = models.ForeignKey(BeerType)
     alcohol_by_volume = models.FloatField()
     image = ImageWithThumbsField(upload_to='images/uploads/',
-                                 sizes=((200, 200), ()),
+                                 sizes=((200, 200), (600, 800)),
                                  null=True, blank=True)
 
     comments = models.TextField(null=True, blank=True)
@@ -108,7 +108,7 @@ class Wine(models.Model):
     wine_type = models.ForeignKey(WineType)
     alcohol_by_volume = models.FloatField()
     image = ImageWithThumbsField(upload_to='images/uploads/',
-                                 sizes=((200, 200), ()),
+                                 sizes=((200, 200), (600, 800)),
                                  null=True, blank=True)
 
     comments = models.TextField(null=True, blank=True)
