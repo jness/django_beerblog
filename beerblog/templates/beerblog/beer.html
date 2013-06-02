@@ -12,7 +12,7 @@
             <div class="span4">
                 <p><b>Brewery</b></p>
             </div>
-            <div class="span6">{{ beer.brewery }}</div>
+            <div class="span6"><a href="{% url beers %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></div>
         </div>
         <hr>
 
@@ -20,7 +20,7 @@
             <div class="span4">
                 <p><b>Type</b></p>
             </div>
-            <div class="span6">{{ beer.beer_type }}</div>
+            <div class="span6"><a href="{% url beers %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></div>
         </div>
         <hr>
 

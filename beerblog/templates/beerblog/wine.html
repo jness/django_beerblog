@@ -12,7 +12,7 @@
             <div class="span4">
                 <p><b>Winery</b></p>
             </div>
-            <div class="span6">{{ wine.winery }}</div>
+            <div class="span6"><a href="{% url wines %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></div>
         </div>
         <hr>
 
@@ -20,7 +20,7 @@
             <div class="span4">
                 <p><b>Type</b></p>
             </div>
-            <div class="span6">{{ wine.wine_type }}</div>
+            <div class="span6"><a href="{% url wines %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a>}</div>
         </div>
         <hr>
 
