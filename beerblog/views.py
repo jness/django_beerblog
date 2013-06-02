@@ -22,8 +22,8 @@ def home(request):
     content = dict()
     content['view'] = 'Home'
     content['settings'] = settings
-    content['latest_beers'] = Beer.objects.all().order_by('-created')[:5]
-    content['latest_wines'] = Wine.objects.all().order_by('-created')[:5]
+    content['latest_beers'] = Beer.objects.all().order_by('-created')[:4]
+    content['latest_wines'] = Wine.objects.all().order_by('-created')[:4]
     return render(request, 'beerblog/home.html', content)
 
 

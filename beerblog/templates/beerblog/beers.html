@@ -19,12 +19,14 @@
         {% for beer in beers %}
 
             <tr>
-                <td>{{ beer.name }}</td>
+                <td><a href="#myModal" data-toggle="modal">{{ beer.name }}</a></td>
                 <td class="hidden-phone">{{ beer.brewery }}</td>
                 <td class="hidden-phone">{{ beer.beer_type }}</td>
                 <td class="hidden-phone">{{ beer.alcohol_by_volume }}%</td>
                 <td class="hidden-phone">{{ beer.overall_score }}</td>
             </tr>
+
+            {% include 'beerblog/beer_modal.html' %}
 
         {% endfor %}
 

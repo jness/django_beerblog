@@ -15,6 +15,7 @@
                 <img src="/static/images/tavern1.jpg" alt="">
                 <div class="hidden-phone carousel-caption">
                   <h4 class=script-header>Welcome to Nessy's Tavern</h4>
+                    <p>Established in 2010</p>
                 </div>
               </div>
 
@@ -22,6 +23,7 @@
                 <img src="/static/images/tavern2.jpg" alt="">
                 <div class="hidden-phone carousel-caption">
                   <h4 class=script-header>Welcome to Nessy's Tavern</h4>
+                    <p>Established in 2010</p>
                 </div>
               </div>
 
@@ -29,6 +31,7 @@
                 <img src="/static/images/tavern3.jpg" alt="">
                 <div class="hidden-phone carousel-caption">
                   <h4 class=script-header>Welcome to Nessy's Tavern</h4>
+                    <p>Established in 2010</p>
                 </div>
               </div>
 
@@ -37,14 +40,6 @@
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
         </div>
-
-        <script type="text/javascript">
-          $(document).ready(function() {
-            $('.carousel').carousel({
-              interval: 5000
-            })
-          });
-        </script>
 
         <div class="row">
             <div class="span5 bubble"><h3 class=script-font>About The Bar:</h3>
@@ -69,7 +64,9 @@
 
             <div class="span2 bubble"><h3 class="script-font">New Beers:</h3>
                 {% for beer in latest_beers %}
-                    <p><i class="icon-glass"></i> {{ beer.name }}</p>
+                    <p><i class="icon-glass"></i><a href="#modal{{ beer.id }}" data-toggle="modal"> {{ beer.name }}</a></p>
+
+                     {% include 'beerblog/beer_modal.html' %}
                 {% endfor %}
             </div>
 
