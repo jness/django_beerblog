@@ -1,5 +1,8 @@
 from django.db import models
 from django_thumbs.db.models import ImageWithThumbsField
+from django.template.defaultfilters import slugify
+
+from shutil import copy
 
 
 class BeerType(models.Model):
@@ -66,12 +69,16 @@ class Beer(models.Model):
     """A Beer Object containing everything we
     need to know about our beer"""
 
+    def get_image_path(self, filename):
+        extension = filename.split('.')[-1]
+        return 'images/uploads/%s.%s' % (slugify(self.name), extension)
+
     name = models.CharField(max_length=255)
     brewery = models.ForeignKey(Brewery)
     created = models.DateTimeField(auto_now_add=True)
     beer_type = models.ForeignKey(BeerType)
     alcohol_by_volume = models.FloatField()
-    image = ImageWithThumbsField(upload_to='images/uploads/',
+    image = ImageWithThumbsField(upload_to=get_image_path,
                                  sizes=((200, 200), (600, 800)),
                                  null=True, blank=True)
 
@@ -97,17 +104,30 @@ class Beer(models.Model):
     def __unicode__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        super(Beer, self).save(*args, **kwargs)
+
+        extension = self.image.path.split('.')[-1]
+        path = '/'.join(self.image.path.split('/')[:-1])
+
+        copy('%s/%s.600x800.%s' % (path, self.name, extension),
+             '%s/%s.%s' % (path, self.name, extension))
+
 
 class Wine(models.Model):
     """A Wine Object containing everything we
     need to know about our wine"""
+
+    def get_image_path(self, filename):
+        extension = filename.split('.')[-1]
+        return 'images/uploads/%s.%s' % (slugify(self.name), extension)
 
     name = models.CharField(max_length=255)
     winery = models.ForeignKey(Winery)
     created = models.DateTimeField(auto_now_add=True)
     wine_type = models.ForeignKey(WineType)
     alcohol_by_volume = models.FloatField()
-    image = ImageWithThumbsField(upload_to='images/uploads/',
+    image = ImageWithThumbsField(upload_to=get_image_path,
                                  sizes=((200, 200), (600, 800)),
                                  null=True, blank=True)
 
@@ -132,3 +152,12 @@ class Wine(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        super(Wine, self).save(*args, **kwargs)
+
+        extension = self.image.path.split('.')[-1]
+        path = '/'.join(self.image.path.split('/')[:-1])
+
+        copy('%s/%s.600x800.%s' % (path, self.name, extension),
+             '%s/%s.%s' % (path, self.name, extension))
