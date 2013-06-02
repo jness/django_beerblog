@@ -69,6 +69,9 @@ class Beer(models.Model):
     """A Beer Object containing everything we
     need to know about our beer"""
 
+    class Meta:
+        ordering = ['name']
+
     def get_image_path(self, filename):
         extension = filename.split('.')[-1]
         return 'images/uploads/%s.%s' % (slugify(self.name), extension)
@@ -119,6 +122,9 @@ class Beer(models.Model):
 class Wine(models.Model):
     """A Wine Object containing everything we
     need to know about our wine"""
+
+    class Meta:
+        ordering = ['name']
 
     def get_image_path(self, filename):
         extension = filename.split('.')[-1]
