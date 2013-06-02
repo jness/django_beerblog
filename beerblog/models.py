@@ -2,7 +2,7 @@ from django.db import models
 from django_thumbs.db.models import ImageWithThumbsField
 from django.template.defaultfilters import slugify
 
-from shutil import copy
+from os import symlink, remove
 
 
 class BeerType(models.Model):
@@ -159,5 +159,7 @@ class Wine(models.Model):
         extension = self.image.path.split('.')[-1]
         path = '/'.join(self.image.path.split('/')[:-1])
 
-        copy('%s/%s.600x800.%s' % (path, self.name, extension),
-             '%s/%s.%s' % (path, self.name, extension))
+        remove('%s/%s.%s' % (path, self.name, extension))
+
+        symlink('%s/%s.600x800.%s' % (path, self.name, extension),
+                '%s/%s.%s' % (path, self.name, extension))
