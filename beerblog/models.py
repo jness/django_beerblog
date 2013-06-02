@@ -112,8 +112,8 @@ class Beer(models.Model):
 
         remove('%s/%s.%s' % (path, self.name, extension))
 
-        symlink('%s/%s.600x800.%s' % (path, self.name, extension),
-                '%s/%s.%s' % (path, self.name, extension))
+        symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
+                '%s/%s.%s' % (path, slugify(self.name), extension))
 
 
 class Wine(models.Model):
@@ -163,5 +163,5 @@ class Wine(models.Model):
 
         remove('%s/%s.%s' % (path, self.name, extension))
 
-        symlink('%s/%s.600x800.%s' % (path, self.name, extension),
-                '%s/%s.%s' % (path, self.name, extension))
+        symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
+                '%s/%s.%s' % (path, slugify(self.name), extension))
