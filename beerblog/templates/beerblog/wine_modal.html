@@ -9,7 +9,13 @@
     <p><b>ABV:</b> {{ wine.alcohol_by_volume }}%</p>
 
     {% if wine.image %}
-        <img style='height: 300px;' src='/static/{{ wine.image }}' />
+        <ul class="thumbnails">
+          <li class="span2">
+            <a href="#" class="thumbnail">
+              <img src="{{ wine.image.url_200x200 }}" alt="">
+            </a>
+          </li>
+        </ul>
     {% endif %}
 
     {% if wine.comments %}
@@ -36,3 +42,15 @@
 
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    if(window.location.href.indexOf("#wine_modal") > -1) {
+      var modal = window.location.href.split('#')[1];
+      var id = modal.match(/\d+/g);
+      if (id) {
+        $('#wine_modal' + id).modal()
+      }
+    }
+  });
+</script>

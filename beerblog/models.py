@@ -1,4 +1,5 @@
 from django.db import models
+from django_thumbs.db.models import ImageWithThumbsField
 
 
 class BeerType(models.Model):
@@ -70,8 +71,9 @@ class Beer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     beer_type = models.ForeignKey(BeerType)
     alcohol_by_volume = models.FloatField()
-    image = models.ImageField(upload_to='images/uploads/',
-                              null=True, blank=True)
+    image = ImageWithThumbsField(upload_to='images/uploads/',
+                                 sizes=((200, 200), ()),
+                                 null=True, blank=True)
 
     comments = models.TextField(null=True, blank=True)
 
