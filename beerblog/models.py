@@ -110,7 +110,7 @@ class Beer(models.Model):
         extension = self.image.path.split('.')[-1]
         path = '/'.join(self.image.path.split('/')[:-1])
 
-        remove('%s/%s.%s' % (path, self.name, extension))
+        remove('%s/%s.%s' % (path, slugify(self.name), extension))
 
         symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
                 '%s/%s.%s' % (path, slugify(self.name), extension))
@@ -161,7 +161,7 @@ class Wine(models.Model):
         extension = self.image.path.split('.')[-1]
         path = '/'.join(self.image.path.split('/')[:-1])
 
-        remove('%s/%s.%s' % (path, self.name, extension))
+        remove('%s/%s.%s' % (path, slugify(self.name), extension))
 
         symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
                 '%s/%s.%s' % (path, slugify(self.name), extension))
