@@ -3,14 +3,14 @@
       "model": "beerblog.Brewery",
       "pk": 1,
       "fields": {
-        "name": "Stone Brewing Co.",
+        "name": "Stone Brewing Co."
       }
 },
 {
       "model": "beerblog.Brewery",
       "pk": 2,
       "fields": {
-        "name": "Unibroue",
+        "name": "Unibroue"
       }
 },
 {
