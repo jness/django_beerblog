@@ -1,5 +1,7 @@
 {% include 'beerblog/head.html' %}
 {% include 'beerblog/menu.html' %}
+
+{% load gravatar %}
 {% load tools %}
 
 <div class="container">
@@ -13,6 +15,7 @@
             <td class="hidden-phone"><b>Brewery</b></td>
             <td class="hidden-phone"><b>Type</b></td>
             <td class="hidden-phone"><b>Rating</b></td>
+            <td class="hidden-phone"><b>Author</b></td>
         </tr>
 
         {% for beer in beers %}
@@ -22,6 +25,10 @@
                 <td class="hidden-phone"><a href="{% url beers %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></td>
                 <td class="hidden-phone"><a href="{% url beers %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></td>
                 <td class="hidden-phone">{{ beer.rating }}</td>
+                <td class="hidden-phone"><img width="35" height="35" class='img-rounded mytooltip' data-toggle="tooltip" data-placement="right" title=""
+                                              data-original-title="{{ beer.author.first_name }}"
+                                              src='{% gravatar_for_email beer.author.email %}' />
+                </td>
             </tr>
 
         {% endfor %}

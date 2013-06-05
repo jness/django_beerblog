@@ -1,6 +1,8 @@
 from django.db import models
 from django_thumbs.db.models import ImageWithThumbsField
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
+
 
 from os import symlink, remove
 
@@ -77,6 +79,8 @@ class Beer(models.Model):
         return 'images/uploads/%s.%s' % (slugify(self.name), extension)
 
     name = models.CharField(max_length=255)
+    author = models.ForeignKey(User, null=True, blank=True)
+
     brewery = models.ForeignKey(Brewery)
     created = models.DateTimeField(auto_now_add=True)
     beer_type = models.ForeignKey(BeerType)
@@ -139,6 +143,8 @@ class Wine(models.Model):
         return 'images/uploads/%s.%s' % (slugify(self.name), extension)
 
     name = models.CharField(max_length=255)
+    author = models.ForeignKey(User, null=True, blank=True)
+
     winery = models.ForeignKey(Winery)
     created = models.DateTimeField(auto_now_add=True)
     wine_type = models.ForeignKey(WineType)

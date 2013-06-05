@@ -1,11 +1,16 @@
 {% include 'beerblog/head.html' %}
 {% include 'beerblog/menu.html' %}
+
+{% load gravatar %}
 {% load tools %}
 
 <div class="container">
     <div class="content">
 
-        <p class=script-header>{{ beer.name }}</p>
+        <p class=script-header>
+            <img width='60' height='60' class='img-circle img-polaroid' src='{% gravatar_for_email beer.author.email %}' />
+            &nbsp; {{ beer.name }}
+        </p>
         <hr>
 
         <div class="row">
@@ -18,7 +23,7 @@
 
         <div class="row">
             <div class="span4">
-                <p><b>Rating</b></p>
+                <p><b>My Rating</b></p>
             </div>
             <div class="span6">{{ beer.rating }}</div>
         </div>
@@ -62,8 +67,8 @@
 
            <div class="span4">
                 {% if beer.image %}
-                    <img class="hidden-phone" src='{{ beer.image.url_600x800 }}' />
-                    <img class="visible-phone" src='{{ beer.image.url_200x200 }}' />
+                    <img class="img-rounded img-polaroid hidden-phone" src='{{ beer.image.url_600x800 }}' />
+                    <img class="img-rounded img-polaroid visible-phone" src='{{ beer.image.url_200x200 }}' />
                 {% else %}
                     <img class="hidden-phone" src='/static/images/blank_beer.jpeg' />
                 {% endif %}

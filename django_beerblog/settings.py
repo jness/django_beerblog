@@ -7,7 +7,7 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
-TITLE = "Nessy's Tavern Beer Blog"
+TITLE = "Nessy's Tavern"
 MANAGERS = ADMINS
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'beerblog',
+    'gravatar',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
