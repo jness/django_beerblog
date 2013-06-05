@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from beerblog.models import Beer, Wine, Brewery, Winery, BeerType, WineType
 
 
-def _get_pages(request, object, count=5):
+def _get_pages(request, object, count=15):
     """Builds a Paginator"""
     pages = Paginator(object, count)
     page = request.GET.get('page')

@@ -32,13 +32,13 @@
 
     <p class=pull-left>
         {% if beers.has_previous %}
-            <a href='.?page={{ beers.previous_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-left></i></a>
+            <a href='.?page={{ beers.previous_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-left></i><small> Previous Page</small></a>
         {% endif %}
     </p>
 
     <p class=pull-right>
         {% if beers.has_next %}
-            <a href='.?page={{ beers.next_page_number }}{{ request|getNonPageArgs }}'><i class=icon-arrow-right></i></a>
+            <a href='.?page={{ beers.next_page_number }}{{ request|getNonPageArgs }}'><small>Next Page </small><i class=icon-arrow-right></i></a>
         {% endif %}
     </p>
     
