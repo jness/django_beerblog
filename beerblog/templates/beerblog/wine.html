@@ -10,6 +10,22 @@
 
         <div class="row">
             <div class="span4">
+                <p><b>Reviewed</b></p>
+            </div>
+            <div class="span6">{{ wine.created }}</div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="span4">
+                <p><b>Rating</b></p>
+            </div>
+            <div class="span6">{{ wine.rating }}</div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="span4">
                 <p><b>Winery</b></p>
             </div>
             <div class="span6"><a href="{% url wines %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></div>
@@ -20,7 +36,7 @@
             <div class="span4">
                 <p><b>Type</b></p>
             </div>
-            <div class="span6"><a href="{% url wines %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a>}</div>
+            <div class="span6"><a href="{% url wines %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></div>
         </div>
         <hr>
 
@@ -55,20 +71,20 @@
            </div>
 
             <div class="span6">
-                <p><b>Appearance: {{ wine.appearance_score }}</b></p>
-                <p>{{ wine.appearance }}</p><hr>
+                <p><b>Sight: {{ wine.sightscore }}</b></p>
+                <p>{{ wine.sight }}</p><hr>
 
                 <p><b>Smell: {{ wine.smell_score }}</b></p>
                 <p>{{ wine.smell }}</p><hr>
 
-                <p><b>Taste: {{ wine.taste_score }}</b></p>
-                <p>{{ wine.taste }}</p><hr>
+                <p><b>Swirl: {{ wine.swirl_score }}</b></p>
+                <p>{{ wine.swirl }}</p><hr>
 
-                <p><b>Mouthfeel: {{ wine.mouthfeel_score }}</b></p>
-                <p>{{ wine.mouthfeel }}</p><hr>
+                <p><b>Sip: {{ wine.sip_score }}</b></p>
+                <p>{{ wine.sip }}</p><hr>
 
-                <p><b>Overall: {{ wine.overall_score }}</b></p>
-                <p>{{ wine.overall }}</p>
+                <p><b>Savor: {{ wine.savor_score }}</b></p>
+                <p>{{ wine.savor }}</p>
             </div>
 
         </div>

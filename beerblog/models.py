@@ -104,19 +104,27 @@ class Beer(models.Model):
     overall_score = models.ForeignKey(Rating, related_name='beer_overall')
     overall = models.TextField()
 
+    @property
+    def rating(self):
+        """Sum up all our scores and get our average rating"""
+        return sum([self.appearance_score.value, self.smell_score.value,
+                    self.taste_score.value, self.mouthfeel_score.value,
+                    self.overall_score.value]) / 5
+
     def __unicode__(self):
         return self.name
 
     def save(self, *args, **kwargs):
         super(Beer, self).save(*args, **kwargs)
 
-        extension = self.image.path.split('.')[-1]
-        path = '/'.join(self.image.path.split('/')[:-1])
+        if self.image:
+            extension = self.image.path.split('.')[-1]
+            path = '/'.join(self.image.path.split('/')[:-1])
 
-        remove('%s/%s.%s' % (path, slugify(self.name), extension))
+            remove('%s/%s.%s' % (path, slugify(self.name), extension))
 
-        symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
-                '%s/%s.%s' % (path, slugify(self.name), extension))
+            symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
+                    '%s/%s.%s' % (path, slugify(self.name), extension))
 
 
 class Wine(models.Model):
@@ -142,21 +150,28 @@ class Wine(models.Model):
     comments = models.TextField(null=True, blank=True)
 
     # Wine Rating and Score Inputs
-    appearance_score = models.ForeignKey(Rating,
-                                         related_name='wine_appearance')
-    appearance = models.TextField()
+    sight_score = models.ForeignKey(Rating,
+                                         related_name='wine_sight')
+    sight = models.TextField()
 
     smell_score = models.ForeignKey(Rating, related_name='wine_smell')
     smell = models.TextField()
 
-    taste_score = models.ForeignKey(Rating, related_name='wine_taste')
-    taste = models.TextField()
+    swirl_score = models.ForeignKey(Rating, related_name='wine_swirl')
+    swirl = models.TextField()
 
-    mouthfeel_score = models.ForeignKey(Rating, related_name='wine_mouthfeel')
-    mouthfeel = models.TextField()
+    sip_score = models.ForeignKey(Rating, related_name='wine_sip')
+    sip = models.TextField()
 
-    overall_score = models.ForeignKey(Rating, related_name='wine_overall')
-    overall = models.TextField()
+    savor_score = models.ForeignKey(Rating, related_name='wine_savor')
+    savor = models.TextField()
+
+    @property
+    def rating(self):
+        """Sum up all our scores and get our average rating"""
+        return sum([self.sight_score.value, self.smell_score.value,
+                    self.swirl_score.value, self.sip_score.value,
+                    self.savor_score.value]) / 5
 
     def __unicode__(self):
         return self.name
@@ -164,10 +179,11 @@ class Wine(models.Model):
     def save(self, *args, **kwargs):
         super(Wine, self).save(*args, **kwargs)
 
-        extension = self.image.path.split('.')[-1]
-        path = '/'.join(self.image.path.split('/')[:-1])
+        if self.image:
+            extension = self.image.path.split('.')[-1]
+            path = '/'.join(self.image.path.split('/')[:-1])
 
-        remove('%s/%s.%s' % (path, slugify(self.name), extension))
+            remove('%s/%s.%s' % (path, slugify(self.name), extension))
 
-        symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
-                '%s/%s.%s' % (path, slugify(self.name), extension))
+            symlink('%s/%s.600x800.%s' % (path, slugify(self.name), extension),
+                    '%s/%s.%s' % (path, slugify(self.name), extension))
