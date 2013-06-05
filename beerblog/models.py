@@ -150,28 +150,28 @@ class Wine(models.Model):
     comments = models.TextField(null=True, blank=True)
 
     # Wine Rating and Score Inputs
-    sight_score = models.ForeignKey(Rating,
-                                         related_name='wine_sight')
-    sight = models.TextField()
+    acidity_score = models.ForeignKey(Rating,
+                                         related_name='wine_acidity')
+    acidity = models.TextField()
 
-    smell_score = models.ForeignKey(Rating, related_name='wine_smell')
-    smell = models.TextField()
+    body_score = models.ForeignKey(Rating, related_name='wine_body')
+    body = models.TextField()
 
-    swirl_score = models.ForeignKey(Rating, related_name='wine_swirl')
-    swirl = models.TextField()
+    sweetness_score = models.ForeignKey(Rating, related_name='wine_sweetness')
+    sweetness = models.TextField()
 
-    sip_score = models.ForeignKey(Rating, related_name='wine_sip')
-    sip = models.TextField()
+    fruit_score = models.ForeignKey(Rating, related_name='wine_fruit')
+    fruit = models.TextField()
 
-    savor_score = models.ForeignKey(Rating, related_name='wine_savor')
-    savor = models.TextField()
+    tannins_score = models.ForeignKey(Rating, related_name='wine_tannins')
+    tannins = models.TextField()
 
     @property
     def rating(self):
         """Sum up all our scores and get our average rating"""
-        return sum([self.sight_score.value, self.smell_score.value,
-                    self.swirl_score.value, self.sip_score.value,
-                    self.savor_score.value]) / 5
+        return sum([self.acidity_score.value, self.body_score.value,
+                    self.sweetness_score.value, self.fruit_score.value,
+                    self.tannins_score.value]) / 5
 
     def __unicode__(self):
         return self.name
