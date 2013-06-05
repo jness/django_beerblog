@@ -1,3 +1,4 @@
 *.pyc
 *.sql
 .idea
+beerblog/static/images/uploads/*
