@@ -1,6 +1,7 @@
 {% include 'beerblog/head.html' %}
 {% include 'beerblog/menu.html' %}
 
+{% load url from future %}
 {% load gravatar %}
 {% load tools %}
 
@@ -21,9 +22,9 @@
         {% for beer in beers %}
 
             <tr>
-                <td><a href="{% url beer beer.id %}">{{ beer.name }}</a></td>
-                <td class="hidden-phone"><a href="{% url beers %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></td>
-                <td class="hidden-phone"><a href="{% url beers %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></td>
+                <td><a href="{% url "beer" beer.id %}">{{ beer.name }}</a></td>
+                <td class="hidden-phone"><a href="{% url "beers" %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></td>
+                <td class="hidden-phone"><a href="{% url "beers" %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></td>
                 <td class="hidden-phone">{{ beer.rating }}</td>
                 <td class="hidden-phone"><img width="35" height="35" class='img-rounded mytooltip' data-toggle="tooltip" data-placement="right" title=""
                                               data-original-title="{{ beer.author.first_name }}"

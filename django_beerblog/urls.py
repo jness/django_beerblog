@@ -1,5 +1,9 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
+
+# needed when testing dev
+# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.autodiscover()
 
@@ -14,3 +18,6 @@ urlpatterns = patterns('',
     url(r'^wines/(?P<pk>[0-9]+)$', 'beerblog.views.wine', name='wine'),
     url(r'^search/$', 'beerblog.views.search', name='search'),
 )
+
+# needed when testing in dev
+# urlpatterns += staticfiles_urlpatterns()

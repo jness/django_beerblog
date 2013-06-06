@@ -1,5 +1,7 @@
 {% include 'beerblog/head.html' %}
 {% include 'beerblog/menu.html' %}
+
+{% load url from future %}
 {% load tools %}
 
 <div class="container">
@@ -18,9 +20,9 @@
         {% for wine in wines %}
 
             <tr>
-                <td><a href="{% url wine wine.id %}">{{ wine.name }}</a></td>
-                <td class="hidden-phone"><a href="{% url wines %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></td>
-                <td class="hidden-phone"><a href="{% url wines %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></td>
+                <td><a href="{% url "wine" wine.id %}">{{ wine.name }}</a></td>
+                <td class="hidden-phone"><a href="{% url "wines" %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></td>
+                <td class="hidden-phone"><a href="{% url "wines" %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></td>
                 <td class="hidden-phone">{{ wine.rating }}</td>
             </tr>
 

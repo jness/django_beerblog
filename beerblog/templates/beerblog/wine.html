@@ -1,5 +1,7 @@
 {% include 'beerblog/head.html' %}
 {% include 'beerblog/menu.html' %}
+
+{% load url from future %}
 {% load tools %}
 
 <div class="container">
@@ -31,7 +33,7 @@
             <div class="span4">
                 <p><b>Winery</b></p>
             </div>
-            <div class="span6"><a href="{% url wines %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></div>
+            <div class="span6"><a href="{% url "wines: %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></div>
         </div>
         <hr>
 
@@ -39,7 +41,7 @@
             <div class="span4">
                 <p><b>Type</b></p>
             </div>
-            <div class="span6"><a href="{% url wines %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></div>
+            <div class="span6"><a href="{% url "wines" %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></div>
         </div>
         <hr>
 
@@ -68,7 +70,7 @@
                     <img class="img-rounded img-polaroid hidden-phone " src='{{ wine.image.url_600x800 }}' />
                     <img class="img-rounded img-polaroid visible-phone" src='{{ wine.image.url_200x200 }}' />
                 {% else %}
-                    <img class="hidden-phone" src='/static/images/blank_wine.jpeg' />
+                    <img class="hidden-phone" src='{{ STATIC_URL }}images/blank_wine.jpeg' />
                 {% endif %}
                 <hr>
            </div>

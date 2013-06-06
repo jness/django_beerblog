@@ -1,5 +1,6 @@
 {% include 'beerblog/head.html' %}
 {% include 'beerblog/menu.html' %}
+{% load url from future %}
 
 {% load gravatar %}
 {% load tools %}
@@ -33,7 +34,7 @@
             <div class="span4">
                 <p><b>Brewery</b></p>
             </div>
-            <div class="span6"><a href="{% url beers %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></div>
+            <div class="span6"><a href="{% url "beers" %}?brewery={{ beer.brewery.id }}">{{ beer.brewery.name }}</a></div>
         </div>
         <hr>
 
@@ -41,7 +42,7 @@
             <div class="span4">
                 <p><b>Type</b></p>
             </div>
-            <div class="span6"><a href="{% url beers %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></div>
+            <div class="span6"><a href="{% url "beers" %}?beer_type={{ beer.beer_type.id }}">{{ beer.beer_type.name }}</a></div>
         </div>
         <hr>
 
@@ -70,7 +71,7 @@
                     <img class="img-rounded img-polaroid hidden-phone" src='{{ beer.image.url_600x800 }}' />
                     <img class="img-rounded img-polaroid visible-phone" src='{{ beer.image.url_200x200 }}' />
                 {% else %}
-                    <img class="hidden-phone" src='/static/images/blank_beer.jpeg' />
+                    <img class="hidden-phone" src='{{ STATIC_URL }}images/blank_beer.jpeg' />
                 {% endif %}
                 <hr>
            </div>
