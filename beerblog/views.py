@@ -35,6 +35,7 @@ def search(request):
     content['settings'] = settings
     search_term = request.GET.get('s')
     if search_term:
+        content['view'] = search_term
         content['search_term'] = search_term
         content['beers'] = Beer.objects.filter(
             name__icontains=search_term)
@@ -82,13 +83,13 @@ def beers(request):
 def beer(request, pk):
     """beer Page"""
     content = dict()
-    content['view'] = 'Beer'
     content['settings'] = settings
 
     beer = Beer.objects.get(id=pk)
     if not beer:
         raise Http404
 
+    content['view'] = beer.name
     content['beer'] = beer
     return render(request, 'beerblog/beer.html', content)
 
@@ -124,12 +125,12 @@ def wines(request):
 def wine(request, pk):
     """wine Page"""
     content = dict()
-    content['view'] = 'Wine'
     content['settings'] = settings
 
     wine = Wine.objects.get(id=pk)
     if not wine:
         raise Http404
 
+    content['view'] = wine.name
     content['wine'] = wine
     return render(request, 'beerblog/wine.html', content)
