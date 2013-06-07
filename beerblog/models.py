@@ -13,7 +13,7 @@ class BeerType(models.Model):
     class Meta:
         ordering = ['name']
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     def __unicode__(self):
         return self.name
@@ -25,7 +25,7 @@ class WineType(models.Model):
     class Meta:
         ordering = ['name']
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     def __unicode__(self):
         return self.name
@@ -49,7 +49,7 @@ class Brewery(models.Model):
     class Meta:
         ordering = ['name']
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     def __unicode__(self):
         return self.name
@@ -61,7 +61,7 @@ class Winery(models.Model):
     class Meta:
         ordering = ['name']
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     def __unicode__(self):
         return self.name

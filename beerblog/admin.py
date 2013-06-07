@@ -16,6 +16,13 @@ class BeerAdmin(admin.ModelAdmin):
         if getattr(obj, 'author', None) is None:
             obj.author = request.user
         obj.save()
+        
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "brewery":
+            kwargs["queryset"] = Brewery.objects.order_by('name')
+        if db_field.name == "beer_type":
+            kwargs["queryset"] = BeerType.objects.order_by('name')
+        return super(BeerAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 admin.site.register(Beer, BeerAdmin)
 
 admin.site.register(BeerType)
@@ -36,6 +43,13 @@ class WineAdmin(admin.ModelAdmin):
         if getattr(obj, 'author', None) is None:
             obj.author = request.user
         obj.save()
+        
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "brewery":
+            kwargs["winery"] = Winery.objects.order_by('name')
+        if db_field.name == "beer_type":
+            kwargs["wine_type"] = WineType.objects.order_by('name')
+        return super(WineAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 admin.site.register(Wine, WineAdmin)
 
 admin.site.register(WineType)
