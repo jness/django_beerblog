@@ -69,17 +69,15 @@
             <table class="table table-striped">
             <tr>
                 <td><b>Name</b></td>
-                <td class="hidden-phone"><b>Winery</b></td>
+                <td class="hidden-phone"><b>Region</b></td>
                 <td class="hidden-phone"><b>Type</b></td>
-                <td class="hidden-phone"><b>ABV</b></td>
                 <td class="hidden-phone"><b>Rating</b></td>
             </tr>
             {% for wine in wines %}
                 <tr>
                     <td><a href="{% url "wine" wine.id %}">{{ wine.name }}</a></td>
-                    <td class="hidden-phone"><a href="{% url "wines" %}?winery={{ wine.winery.id }}">{{ wine.winery }}</a></td>
+                    <td class="hidden-phone"><a href="{% url "wines" %}?region={{ wine.region.id }}">{{ wine.region }}</a></td>
                     <td class="hidden-phone"><a href="{% url "wines" %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></td>
-                    <td class="hidden-phone">{{ wine.alcohol_by_volume }}%</td>
                     <td class="hidden-phone">{{ wine.overall_score }}</td>
                 </tr>
             {% endfor %}

@@ -7,6 +7,18 @@ from django.contrib.auth.models import User
 from os import symlink, remove
 
 
+class Region(models.Model):
+    """The wine regions"""
+
+    class Meta:
+        ordering = ['name']
+
+    name = models.CharField(max_length=255, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
 class BeerType(models.Model):
     """The different beer types"""
 
@@ -146,6 +158,7 @@ class Wine(models.Model):
     author = models.ForeignKey(User, null=True, blank=True)
 
     winery = models.ForeignKey(Winery)
+    region = models.ForeignKey(Region)
     created = models.DateTimeField(auto_now_add=True)
     wine_type = models.ForeignKey(WineType)
     alcohol_by_volume = models.FloatField()

@@ -114,6 +114,10 @@ def wines(request):
     if wine:
         wines = wines.filter(id=wine)
 
+    region = request.GET.get('region')
+    if wine:
+        wines = wines.filter(region__id=region)
+
     search = request.GET.get('search')
     if search:
         wines = wines.filter(name__icontains=search)
