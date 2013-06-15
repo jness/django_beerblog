@@ -62,55 +62,6 @@
             {% endfor %}
             </table>
          {% endif %}
-
-
-         {% if wines %}
-            <p class=script-font>Wines</p>
-            <table class="table table-striped">
-            <tr>
-                <td><b>Name</b></td>
-                <td class="hidden-phone"><b>Region</b></td>
-                <td class="hidden-phone"><b>Type</b></td>
-                <td class="hidden-phone"><b>Rating</b></td>
-            </tr>
-            {% for wine in wines %}
-                <tr>
-                    <td><a href="{% url "wine" wine.id %}">{{ wine.name }}</a></td>
-                    <td class="hidden-phone"><a href="{% url "wines" %}?region={{ wine.region.id }}">{{ wine.region }}</a></td>
-                    <td class="hidden-phone"><a href="{% url "wines" %}?wine_type={{ wine.wine_type.id }}">{{ wine.wine_type.name }}</a></td>
-                    <td class="hidden-phone">{{ wine.overall_score }}</td>
-                </tr>
-            {% endfor %}
-            </table>
-         {% endif %}
-
-         {% if wine_type %}
-            <p class=script-font>Wine Type</p>
-            <table class="table table-striped">
-            <tr>
-                <td><b>Name</b></td>
-            </tr>
-            {% for type in wine_type %}
-                <tr>
-                    <td><a href="{% url "wines" %}?wine_type={{ type.id }}">{{ type.name }}</a></td>
-                </tr>
-            {% endfor %}
-            </table>
-         {% endif %}
-
-         {% if wineries %}
-            <p class=script-font>Wineries</p>
-            <table class="table table-striped">
-            <tr>
-                <td><b>Name</b></td>
-            </tr>
-            {% for winery in wineries %}
-                <tr>
-                    <td><a href="{% url "wines" %}?winery={{ winery.id }}">{{ winery.name }}</a></td>
-                </tr>
-            {% endfor %}
-            </table>
-         {% endif %}
     
     </div>
 </div>
