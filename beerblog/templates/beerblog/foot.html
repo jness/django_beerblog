@@ -13,13 +13,14 @@
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-popover.js"></script>
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-modal.js"></script>
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="{{ STATIC_URL }}js/imgLiquid.js"></script>
 
     <script type="text/javascript">
       $(document).ready(function() {
         $('.carousel').carousel({
           interval: 5000
         })
-        $('.mytooltip').tooltip()
+        $(".imgLiquidFill").imgLiquid()
       });
     </script>
 
