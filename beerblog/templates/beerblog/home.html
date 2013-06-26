@@ -113,7 +113,7 @@
 
             <div class="span4 bubble"><h3 class="script-font">New Beers:</h3>
                 {% for beer in latest_beers %}
-                    <p><i class="icon-glass"></i> <a href="{% url "beer" beer.id %}">{{ beer.name }}</a></p>
+                    <p><i class="icon-glass"></i> <a href="{% url "beer" beer.slug %}">{{ beer.name }}</a></p>
                 {% endfor %}
             </div>
 

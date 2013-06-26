@@ -7,7 +7,7 @@ class BeerAdmin(admin.ModelAdmin):
     list_display = ['name', 'brewery', 'author']
 
     def get_form(self, request, obj=None, **kwargs):
-            self.exclude = ("author", )
+            self.exclude = ("author", "slug")
             form = super(BeerAdmin, self).get_form(request, obj, **kwargs)
             return form
 

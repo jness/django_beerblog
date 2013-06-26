@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     # Our Views
     url(r'^$', 'beerblog.views.home', name='home'),
     url(r'^beers/$', 'beerblog.views.beers', name='beers'),
-    url(r'^beers/(?P<pk>[0-9]+)$', 'beerblog.views.beer', name='beer'),
+    url(r'^beers/(?P<slug>[\w\-\.\_]+)$', 'beerblog.views.beer', name='beer'),
     url(r'^search/$', 'beerblog.views.search', name='search'),
 )
 

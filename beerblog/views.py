@@ -73,12 +73,17 @@ def beers(request):
     return render(request, 'beerblog/beers.html', content)
 
 
-def beer(request, pk):
+def beer(request, slug):
     """beer Page"""
     content = dict()
     content['settings'] = settings
 
-    beer = Beer.objects.get(id=pk)
+    try:
+        int(slug)
+        beer = Beer.objects.get(id=slug)
+    except ValueError:
+        beer = Beer.objects.get(slug=slug)
+
     if not beer:
         raise Http404
 

@@ -2,6 +2,7 @@ from django.db import models
 from django_thumbs.db.models import ImageWithThumbsField
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 
 from os import symlink, remove
@@ -54,7 +55,8 @@ class Beer(models.Model):
         extension = filename.split('.')[-1]
         return 'images/uploads/%s.%s' % (slugify(self.name), extension)
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
 
     brewery = models.ForeignKey(Brewery)
@@ -95,6 +97,9 @@ class Beer(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+
+        self.slug = slugify(self.name)
+
         super(Beer, self).save(*args, **kwargs)
 
         if self.image:
